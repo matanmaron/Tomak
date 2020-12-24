@@ -7,8 +7,6 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour {
     public float WalkSpeed;
     public float JumpForce;
-    public AnimationClip _walk, _jump;
-    public Animation _Legs;
     public Transform _Blade, _GroundCast;
     public Camera cam;
     public bool mirror;
@@ -20,10 +18,12 @@ public class Player : MonoBehaviour {
     private Rigidbody2D rig;
     private Vector2 _inputAxis;
     private RaycastHit2D _hit;
+    private Animator _animator;
 
 	void Start ()
     {
         rig = gameObject.GetComponent<Rigidbody2D>();
+        _animator = gameObject.GetComponent<Animator>();
         _startScale = transform.localScale.x;
 	}
 
@@ -75,21 +75,25 @@ public class Player : MonoBehaviour {
 
             if (_canWalk)
             {
-                _Legs.clip = _walk;
-                _Legs.Play();
+                if (!_isWalk)
+                {
+                    _animator.Play("Walk");
+                    _isWalk = true;
+                }
             }
         }
 
         else
         {
             rig.velocity = new Vector2(0, rig.velocity.y);
+            _animator.Play("Idle");
+            _isWalk = false;
         }
 
         if (_isJump)
         {
             rig.AddForce(new Vector2(0, JumpForce));
-            _Legs.clip = _jump;
-            _Legs.Play();
+            _animator.Play("Jump");
             _canJump = false;
             _isJump = false;
         }

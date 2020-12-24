@@ -1,49 +1,49 @@
 fileFormatVersion: 2
-guid: 777fefc991a960e45890d0e387cfc758
+guid: 2ee2495dd5bcc374caa02d44b87a6e25
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 21300000
-    second: Bushes_0
+      213: -4455121960867056536
+    second: Artboard 26_0
   - first:
-      213: 21300002
-    second: Bushes_1
+      213: 39626730947493147
+    second: Artboard 26_1
   - first:
-      213: 21300004
-    second: Bushes_2
+      213: -3927409464866522723
+    second: Artboard 26_2
   - first:
-      213: 21300006
-    second: Bushes_3
+      213: -8382598773912573472
+    second: Artboard 26_3
   - first:
-      213: 21300008
-    second: Bushes_4
+      213: 4845051968650116100
+    second: Artboard 26_4
   - first:
-      213: 21300010
-    second: Bushes_5
+      213: -6581407506368392047
+    second: Artboard 26_5
   - first:
-      213: 21300012
-    second: Bushes_6
+      213: -8593548347499082696
+    second: Artboard 26_6
   - first:
-      213: 21300014
-    second: Bushes_7
+      213: 916690748719626711
+    second: Artboard 26_7
   - first:
-      213: 21300016
-    second: Bushes_8
+      213: -6428197057784723146
+    second: Artboard 26_8
   - first:
-      213: 21300018
-    second: Bushes_9
+      213: -994731798060468599
+    second: Artboard 26_9
   - first:
-      213: 21300020
-    second: Bushes_10
+      213: 6427275546382623834
+    second: Artboard 26_10
   - first:
-      213: 21300022
-    second: Bushes_11
+      213: -518100470766239071
+    second: Artboard 26_11
   - first:
-      213: 21300024
-    second: Bushes_12
+      213: -1442763960107976323
+    second: Artboard 26_12
   - first:
-      213: 21300026
-    second: Bushes_13
+      213: 5182693889803622724
+    second: Artboard 26_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -99,337 +99,349 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 1
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bushes_0
+      name: Artboard 26_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1241
-        width: 578
-        height: 134
+        x: 508
+        y: 42
+        width: 1665
+        height: 1243
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02305410000000000800000000000000
-      internalID: 21300000
+      spriteID: 8643a7b4e2a3c22c0800000000000000
+      internalID: -4455121960867056536
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bushes_1
+      name: Artboard 26_1
       rect:
         serializedVersion: 2
-        x: 655
-        y: 1231
-        width: 799
-        height: 135
+        x: 2304
+        y: 994
+        width: 116
+        height: 84
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 22305410000000000800000000000000
-      internalID: 21300002
+      spriteID: b1d3cb54d48cc8000800000000000000
+      internalID: 39626730947493147
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bushes_2
+      name: Artboard 26_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1062
-        width: 578
-        height: 135
+        x: 2593
+        y: 983
+        width: 125
+        height: 106
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42305410000000000800000000000000
-      internalID: 21300004
+      spriteID: d99bf1766e90f79c0800000000000000
+      internalID: -3927409464866522723
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bushes_3
+      name: Artboard 26_3
       rect:
         serializedVersion: 2
-        x: 655
-        y: 1053
-        width: 799
-        height: 134
+        x: 2943
+        y: 940
+        width: 178
+        height: 194
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62305410000000000800000000000000
-      internalID: 21300006
+      spriteID: 0e9e05af3d60bab80800000000000000
+      internalID: -8382598773912573472
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bushes_4
+      name: Artboard 26_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 840
-        width: 578
-        height: 117
+        x: 3259
+        y: 903
+        width: 189
+        height: 188
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82305410000000000800000000000000
-      internalID: 21300008
+      spriteID: 40c72b568151d3340800000000000000
+      internalID: 4845051968650116100
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bushes_5
+      name: Artboard 26_5
       rect:
         serializedVersion: 2
-        x: 711
-        y: 842
-        width: 579
-        height: 134
+        x: 3613
+        y: 857
+        width: 232
+        height: 281
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2305410000000000800000000000000
-      internalID: 21300010
+      spriteID: 19492d42eb42aa4a0800000000000000
+      internalID: -6581407506368392047
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bushes_6
+      name: Artboard 26_6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 619
-        width: 578
-        height: 117
+        x: 137
+        y: 731
+        width: 216
+        height: 230
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2305410000000000800000000000000
-      internalID: 21300012
+      spriteID: 83c0c2bfe459db880800000000000000
+      internalID: -8593548347499082696
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bushes_7
+      name: Artboard 26_7
       rect:
         serializedVersion: 2
-        x: 711
-        y: 620
-        width: 579
-        height: 135
+        x: 2492
+        y: 508
+        width: 120
+        height: 279
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2305410000000000800000000000000
-      internalID: 21300014
+      spriteID: 7d9f15e016db8bc00800000000000000
+      internalID: 916690748719626711
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bushes_8
+      name: Artboard 26_8
       rect:
         serializedVersion: 2
-        x: 25
-        y: 438
-        width: 375
+        x: 3549
+        y: 468
+        width: 284
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 639c78085d47ac6a0800000000000000
+      internalID: -6428197057784723146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Artboard 26_9
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 320
+        width: 325
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 986f1d133b00232f0800000000000000
+      internalID: -994731798060468599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Artboard 26_10
+      rect:
+        serializedVersion: 2
+        x: 2839
+        y: 506
+        width: 508
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a54e0b76e05423950800000000000000
+      internalID: 6427275546382623834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Artboard 26_11
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 80
+        width: 126
         height: 107
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03305410000000000800000000000000
-      internalID: 21300016
+      spriteID: 1a2040aed565fc8f0800000000000000
+      internalID: -518100470766239071
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bushes_9
+      name: Artboard 26_12
       rect:
         serializedVersion: 2
-        x: 707
-        y: 433
-        width: 305
-        height: 95
+        x: 2415
+        y: 57
+        width: 329
+        height: 325
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23305410000000000800000000000000
-      internalID: 21300018
+      spriteID: d79370782d54afbe0800000000000000
+      internalID: -1442763960107976323
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bushes_10
+      name: Artboard 26_13
       rect:
         serializedVersion: 2
-        x: 707
-        y: 249
-        width: 305
-        height: 96
+        x: 2924
+        y: 73
+        width: 983
+        height: 216
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43305410000000000800000000000000
-      internalID: 21300020
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bushes_11
-      rect:
-        serializedVersion: 2
-        x: 1042
-        y: 344
-        width: 7
-        height: 15
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 63305410000000000800000000000000
-      internalID: 21300022
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bushes_12
-      rect:
-        serializedVersion: 2
-        x: 25
-        y: 223
-        width: 375
-        height: 107
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 83305410000000000800000000000000
-      internalID: 21300024
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bushes_13
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 2
-        width: 1286
-        height: 124
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a3305410000000000800000000000000
-      internalID: 21300026
+      spriteID: 449155932a0ace740800000000000000
+      internalID: 5182693889803622724
       vertices: []
       indices: 
       edges: []
@@ -437,7 +449,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
