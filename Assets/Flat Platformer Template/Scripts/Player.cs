@@ -19,9 +19,10 @@ public class Player : MonoBehaviour {
     private Vector2 _inputAxis;
     private RaycastHit2D _hit;
     private Animator _animator;
-
+    private Vector3 StartPos;
 	void Start ()
     {
+        StartPos = transform.position;
         rig = gameObject.GetComponent<Rigidbody2D>();
         _animator = gameObject.GetComponent<Animator>();
         _startScale = transform.localScale.x;
@@ -31,7 +32,7 @@ public class Player : MonoBehaviour {
     {
         if (_hit = Physics2D.Linecast(new Vector2(_GroundCast.position.x, _GroundCast.position.y + 0.2f), _GroundCast.position))
         {
-            if (!_hit.transform.CompareTag("Player"))
+            if (_hit.transform.CompareTag("Ground"))
             {
                 _canJump = true;
                 _canWalk = true;
@@ -107,5 +108,13 @@ public class Player : MonoBehaviour {
     void OnDrawGizmos()
     {
         Gizmos.DrawLine(transform.position, _GroundCast.position);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Enemy"))
+        {
+            Debug.Log("DEAD !");
+            transform.position = StartPos;
+        }
     }
 }
