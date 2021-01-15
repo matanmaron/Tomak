@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour {
@@ -10,7 +11,7 @@ public class Player : MonoBehaviour {
     public Transform _Blade, _GroundCast;
     public Camera cam;
     public bool mirror;
-
+    public Text _scoreTxt = null;
 
     private bool _canJump, _canWalk;
     private bool _isWalk, _isJump;
@@ -20,16 +21,32 @@ public class Player : MonoBehaviour {
     private RaycastHit2D _hit;
     private Animator _animator;
     private Vector3 StartPos;
-	void Start ()
+    private int _score;
+    private bool _isDead;
+
+    void Start ()
     {
-        StartPos = transform.position;
+        _isDead = false;
+        _score = -1;
+        SetScore();
+         StartPos = transform.position;
         rig = gameObject.GetComponent<Rigidbody2D>();
         _animator = gameObject.GetComponent<Animator>();
         _startScale = transform.localScale.x;
 	}
 
+    private void SetScore()
+    {
+        _score++;
+        _scoreTxt.text = _score.ToString();
+    }
+
     void Update()
     {
+        if (_isDead)
+        {
+            return;
+        }
         if (_hit = Physics2D.Linecast(new Vector2(_GroundCast.position.x, _GroundCast.position.y + 0.2f), _GroundCast.position))
         {
             if (_hit.transform.CompareTag("Ground"))
@@ -50,6 +67,10 @@ public class Player : MonoBehaviour {
 
     void FixedUpdate()
     {
+        if (_isDead)
+        {
+            return;
+        }
         Vector3 dir = _inputAxis;
         dir.Normalize();
 
@@ -111,10 +132,38 @@ public class Player : MonoBehaviour {
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (_isDead)
+        {
+            return;
+        }
         if (collision.transform.CompareTag("Enemy"))
         {
-            Debug.Log("DEAD !");
-            transform.position = StartPos;
+            StartCoroutine(deadCoroutine());
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (_isDead)
+        {
+            return;
+        }
+        if (collision.transform.CompareTag("Point"))
+        {
+            Debug.Log("SCORE !");
+            SetScore();
+            Destroy(collision.gameObject);
+        }
+    }
+
+    IEnumerator deadCoroutine()
+    {
+        Debug.Log("DEAD !");
+        _isDead = true;
+        _animator.StopPlayback();
+        _animator.Play("Dead");
+        yield return new WaitForSeconds(2.5f);
+        transform.position = StartPos;
+        _isDead = false;
     }
 }
