@@ -69,6 +69,8 @@ public class Player : MonoBehaviour {
     {
         if (_isDead)
         {
+            float step = 2 * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, -41f, transform.position.z), step);
             return;
         }
         Vector3 dir = _inputAxis;
@@ -138,7 +140,7 @@ public class Player : MonoBehaviour {
         }
         if (collision.transform.CompareTag("Enemy"))
         {
-            StartCoroutine(deadCoroutine());
+            StartCoroutine(DeadCoroutine());
         }
     }
 
@@ -156,7 +158,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-    IEnumerator deadCoroutine()
+    IEnumerator DeadCoroutine()
     {
         Debug.Log("DEAD !");
         _isDead = true;
