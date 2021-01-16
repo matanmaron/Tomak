@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour {
@@ -12,6 +13,8 @@ public class Player : MonoBehaviour {
     public Camera cam;
     public bool mirror;
     public Text _scoreTxt = null;
+    public GameObject _WinPanel = null;
+    public AudioManager _AudioManager = null;
 
     private bool _canJump, _canWalk;
     private bool _isWalk, _isJump;
@@ -23,9 +26,13 @@ public class Player : MonoBehaviour {
     private Vector3 StartPos;
     private int _score;
     private bool _isDead;
+    private bool _afterJump = false;
+    private string prevPointName = string.Empty;
 
     void Start ()
     {
+        _afterJump = false;
+        _WinPanel.SetActive(false);
         _isDead = false;
         _score = -1;
         SetScore();
@@ -39,6 +46,7 @@ public class Player : MonoBehaviour {
     {
         _score++;
         _scoreTxt.text = _score.ToString();
+        Debug.Log($"scorre: {_score}");
     }
 
     void Update()
@@ -51,6 +59,12 @@ public class Player : MonoBehaviour {
         {
             if (_hit.transform.CompareTag("Ground"))
             {
+                if (_afterJump)
+                {
+                    Debug.Log("Hit GROUND AFTER JUMP");
+                    _AudioManager.PlayStep(true);
+                    _afterJump = false;
+                }
                 _canJump = true;
                 _canWalk = true;
             }
@@ -101,6 +115,7 @@ public class Player : MonoBehaviour {
             {
                 if (!_isWalk)
                 {
+                    _AudioManager.PlayStep(true);
                     _animator.Play("Walk");
                     _isWalk = true;
                 }
@@ -109,6 +124,7 @@ public class Player : MonoBehaviour {
 
         else
         {
+            _AudioManager.PlayStep(false);
             rig.velocity = new Vector2(0, rig.velocity.y);
             _animator.Play("Idle");
             _isWalk = false;
@@ -116,6 +132,11 @@ public class Player : MonoBehaviour {
 
         if (_isJump)
         {
+            if (_canJump)
+            {
+                _AudioManager.PlayJump();
+                _afterJump = true;
+            }
             rig.AddForce(new Vector2(0, JumpForce));
             _animator.Play("Jump");
             _canJump = false;
@@ -152,20 +173,51 @@ public class Player : MonoBehaviour {
         }
         if (collision.transform.CompareTag("Point"))
         {
+            if (collision.transform.name == prevPointName)
+            {
+                return;
+            }
             Debug.Log("SCORE !");
+            prevPointName = collision.transform.name;
+            _AudioManager.PlayScore();
             SetScore();
             Destroy(collision.gameObject);
         }
+        if (_score > 15)
+        {
+            _AudioManager.PlayWin();
+            Win();
+        }
+    }
+
+    private void Win()
+    {
+        _animator.Play("Idle");
+        _AudioManager.PlayStep(false);
+        _isWalk = false;
+        _isJump = false;
+        rig.velocity = Vector2.zero;
+        _isDead = true;
+        _WinPanel.SetActive(true);
     }
 
     IEnumerator DeadCoroutine()
     {
         Debug.Log("DEAD !");
+        _AudioManager.PlayDead();
         _isDead = true;
         _animator.StopPlayback();
         _animator.Play("Dead");
         yield return new WaitForSeconds(2.5f);
         transform.position = StartPos;
+        _isWalk = false;
+        _isJump = false;
         _isDead = false;
     }
+
+    public void OnWinClick()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 }
