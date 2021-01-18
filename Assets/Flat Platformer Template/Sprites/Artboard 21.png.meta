@@ -26,6 +26,27 @@ TextureImporter:
   - first:
       213: -4948102995283838783
     second: Artboard 21_7
+  - first:
+      213: 4304422998182458296
+    second: Artboard 21_8
+  - first:
+      213: -3394078374742942586
+    second: Artboard 21_9
+  - first:
+      213: 1323339771608772372
+    second: Artboard 21_10
+  - first:
+      213: 4113354950451758617
+    second: Artboard 21_11
+  - first:
+      213: 4856033614121795545
+    second: Artboard 21_12
+  - first:
+      213: -1400767089600812988
+    second: Artboard 21_13
+  - first:
+      213: 2461803049157423521
+    second: Artboard 21_14
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -135,55 +156,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Artboard 21_0
-      rect:
-        serializedVersion: 2
-        x: 129
-        y: 186
-        width: 14
-        height: 35
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 873f6e7a2042cde00800000000000000
-      internalID: 1070770405232800632
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Artboard 21_1
-      rect:
-        serializedVersion: 2
-        x: 157
-        y: 199
-        width: 26
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8d29c05cb5822bee0800000000000000
-      internalID: -1246889772215135528
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Artboard 21_3
       rect:
         serializedVersion: 2
-        x: 92
-        y: 156
-        width: 30
-        height: 39
+        x: 42
+        y: 20
+        width: 166
+        height: 601
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -201,10 +180,10 @@ TextureImporter:
       name: Artboard 21_4
       rect:
         serializedVersion: 2
-        x: 271
-        y: 51
-        width: 50
-        height: 166
+        x: 391
+        y: 293
+        width: 19
+        height: 49
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -222,10 +201,10 @@ TextureImporter:
       name: Artboard 21_5
       rect:
         serializedVersion: 2
-        x: 385
-        y: 73
-        width: 173
-        height: 112
+        x: 431
+        y: 311
+        width: 37
+        height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,13 +219,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Artboard 21_6
+      name: Artboard 21_7
       rect:
         serializedVersion: 2
-        x: 111
-        y: 38
-        width: 57
-        height: 92
+        x: 880
+        y: 238
+        width: 135
+        height: 123
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -254,8 +233,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20a481eefe46fed10800000000000000
-      internalID: 2157053728188287490
+      spriteID: 1c87f0eba8ec45bb0800000000000000
+      internalID: -4948102995283838783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Artboard 21_8
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 250
+        width: 41
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b3ffa939e16cbb30800000000000000
+      internalID: 4304422998182458296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Artboard 21_9
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 73
+        width: 70
+        height: 266
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68c9c9563bfc5e0d0800000000000000
+      internalID: -3394078374742942586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Artboard 21_10
+      rect:
+        serializedVersion: 2
+        x: 365
+        y: 83
+        width: 82
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41f23ebc2827d5210800000000000000
+      internalID: 1323339771608772372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Artboard 21_11
+      rect:
+        serializedVersion: 2
+        x: 753
+        y: 67
+        width: 244
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91685c0b882951930800000000000000
+      internalID: 4113354950451758617
       vertices: []
       indices: 
       edges: []
