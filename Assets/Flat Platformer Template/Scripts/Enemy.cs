@@ -28,11 +28,11 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (Mathf.Abs(transform.position.x - StartPoint.x) < 0.1f)
+        if (Mathf.Abs(transform.position.x - StartPoint.x) < 0.5f)
         {
             dir.x = 1;
         }
-        else if (Mathf.Abs(transform.position.x - EndPoint.x) < 0.1f)
+        else if (Mathf.Abs(transform.position.x - EndPoint.x) < 0.5f)
         {
             dir.x = -1;
         }

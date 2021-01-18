@@ -51,6 +51,10 @@ public class Player : MonoBehaviour {
 
     void Update()
     {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
         if (_isDead)
         {
             return;
