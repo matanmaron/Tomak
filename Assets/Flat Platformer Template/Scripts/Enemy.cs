@@ -9,16 +9,22 @@ public class Enemy : MonoBehaviour
     public int WalkDistanceX;
     public float WalkSpeed;
     public bool mirror;
-
+    public float SleepTime = 1;
+    public GameObject zObject = null;
 
     private float rot, _startScale;
     private Rigidbody2D rig;
     private Vector3 StartPoint;
     private Vector3 EndPoint;
     Vector3 dir = Vector3.zero;
+    private bool _isSleeping = false;
 
     void Start()
     {
+        if (zObject != null)
+        {
+            zObject.SetActive(false);
+        }
         StartPoint = transform.position;
         EndPoint = new Vector3(transform.position.x + WalkDistanceX, transform.position.y, transform.position.z);
         rig = gameObject.GetComponent<Rigidbody2D>();
@@ -41,6 +47,10 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (_isSleeping)
+        {
+            return;
+        }
         dir.Normalize();
 
         if (dir.x > 0)
@@ -60,11 +70,34 @@ public class Enemy : MonoBehaviour
             transform.localScale = new Vector3(-_startScale, _startScale, 1);
             //_Blade.transform.rotation = Quaternion.AngleAxis(rot, Vector3.forward);
         }
-        rig.velocity = new Vector2(dir.x * WalkSpeed * Time.deltaTime, rig.velocity.y);
+        if (rig!= null)
+        {
+            rig.velocity = new Vector2(dir.x * WalkSpeed * Time.deltaTime, rig.velocity.y);
+        }
     }
 
     public bool IsMirror()
     {
         return mirror;
+    }
+
+    public void Sleep()
+    {
+        if (_isSleeping)
+        {
+            return;
+        }
+        StartCoroutine(MakeMeSleep());
+    }
+
+    IEnumerator MakeMeSleep()
+    {
+        GetComponent<Rigidbody2D>().simulated = false;
+        zObject.SetActive(true);
+        _isSleeping = true;
+        yield return new WaitForSeconds(SleepTime);
+        zObject.SetActive(false);
+        _isSleeping = false;
+        GetComponent<Rigidbody2D>().simulated = true;
     }
 }

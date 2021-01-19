@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource _AudioSource = null;
     public AudioSource Jump = null;
     public AudioSource Step = null;
+    public AudioSource Song = null;
     public AudioClip Dead = null;
     public AudioClip Score1 = null;
     public AudioClip Score2 = null;
@@ -20,7 +21,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayScore()
     {
-        if (score>3)
+        if (score > 3)
         {
             _AudioSource.clip = Score2;
             score = 0;
@@ -62,5 +63,14 @@ public class AudioManager : MonoBehaviour
             Step.Stop();
         }
 
+    }
+
+    public void PlaySong()
+    {
+        if (Song.isPlaying)
+        {
+            return;
+        }
+        Song.Play();
     }
 }

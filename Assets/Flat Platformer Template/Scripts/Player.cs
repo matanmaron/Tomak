@@ -15,8 +15,10 @@ public class Player : MonoBehaviour {
     public Text _scoreTxt = null;
     public GameObject _WinPanel = null;
     public AudioManager _AudioManager = null;
+    public GameObject _singObject = null;
+    public GameObject _noteObject = null;
 
-    private bool _canJump, _canWalk;
+    private bool _canJump, _canWalk, _canShoot;
     private bool _isWalk, _isJump;
     private float rot, _startScale;
     private Rigidbody2D rig;
@@ -31,9 +33,11 @@ public class Player : MonoBehaviour {
 
     void Start ()
     {
+        _noteObject.SetActive(false);
         _afterJump = false;
         _WinPanel.SetActive(false);
         _isDead = false;
+        _canShoot = true;
         _score = -1;
         SetScore();
          StartPos = transform.position;
@@ -81,6 +85,38 @@ public class Player : MonoBehaviour {
             _canWalk = false;
             _isJump = true;
         }
+        if (_canShoot)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StartCoroutine(ShootTimer());
+            }
+        }
+    }
+
+    IEnumerator ShootTimer()
+    {
+        _AudioManager.PlaySong();
+        _canShoot = false;
+        _singObject.SetActive(false);
+        _noteObject.SetActive(true);
+        Vector2 face = mirror ? Vector2.left : Vector2.right;
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x+3, transform.position.y), face, 5f);
+        //EnemyLayer is the layer having enemys
+        if (hit)
+        {
+            print(hit.collider.name+"-"+hit.collider.tag);
+            var enem = hit.collider.transform.root.GetComponent<Enemy>();
+            if (enem != null)
+            {
+                enem.Sleep();
+            }
+        }
+        yield return new WaitForSeconds(1);
+        _noteObject.SetActive(false);
+        yield return new WaitForSeconds(4);
+        _canShoot = true;
+        _singObject.SetActive(true);
     }
 
     void FixedUpdate()
