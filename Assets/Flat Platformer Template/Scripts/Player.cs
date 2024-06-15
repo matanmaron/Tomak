@@ -1,12 +1,17 @@
 ﻿using UnityEngine;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+using System;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Player : MonoBehaviour {
+public class Player : MonoBehaviour
+{
+    [SerializeField] InputActionReference inputActionMove;
+    [SerializeField] InputActionReference inputActionShoot;
+    [SerializeField] InputActionReference inputActionJump;
+    [SerializeField] InputActionReference inputActionQuit;
     public float WalkSpeed;
     public float JumpForce;
     public Transform _Blade, _GroundCast;
@@ -31,7 +36,7 @@ public class Player : MonoBehaviour {
     private bool _afterJump = false;
     private string prevPointName = string.Empty;
 
-    void Start ()
+    void Start()
     {
         _noteObject.SetActive(false);
         _afterJump = false;
@@ -40,11 +45,11 @@ public class Player : MonoBehaviour {
         _canShoot = true;
         _score = -1;
         SetScore();
-         StartPos = transform.position;
+        StartPos = transform.position;
         rig = gameObject.GetComponent<Rigidbody2D>();
         _animator = gameObject.GetComponent<Animator>();
         _startScale = transform.localScale.x;
-	}
+    }
 
     private void SetScore()
     {
@@ -53,12 +58,44 @@ public class Player : MonoBehaviour {
         Debug.Log($"scorre: {_score}");
     }
 
+    private void OnEnable()
+    {
+        inputActionShoot.action.started += ShootKey;
+        inputActionJump.action.started += JumpKey;
+        inputActionQuit.action.started += QuitKey;
+    }
+
+    private void OnDisable()
+    {
+        inputActionShoot.action.started -= ShootKey;
+        inputActionJump.action.started -= JumpKey;
+        inputActionQuit.action.started -= QuitKey;
+    }
+
+    private void QuitKey(InputAction.CallbackContext context)
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    private void JumpKey(InputAction.CallbackContext context)
+    {
+        if (_canJump)
+        {
+            _canWalk = false;
+            _isJump = true;
+        }
+    }
+
+    private void ShootKey(InputAction.CallbackContext context)
+    {
+        if (_canShoot)
+        {
+            StartCoroutine(ShootTimer());
+        }
+    }
+
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            SceneManager.LoadScene(0);
-        }
         if (_isDead)
         {
             return;
@@ -78,20 +115,7 @@ public class Player : MonoBehaviour {
             }
         }
         else _canJump = false;
-
-        _inputAxis = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        if (_inputAxis.y > 0 && _canJump)
-        {
-            _canWalk = false;
-            _isJump = true;
-        }
-        if (_canShoot)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                StartCoroutine(ShootTimer());
-            }
-        }
+        _inputAxis = inputActionMove.action.ReadValue<Vector2>();
     }
 
     IEnumerator ShootTimer()
@@ -101,11 +125,11 @@ public class Player : MonoBehaviour {
         _singObject.SetActive(false);
         _noteObject.SetActive(true);
         Vector2 face = mirror ? Vector2.left : Vector2.right;
-        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x+3, transform.position.y), face, 5f);
+        RaycastHit2D hit = Physics2D.Raycast(new Vector2(transform.position.x + 3, transform.position.y), face, 5f);
         //EnemyLayer is the layer having enemys
         if (hit)
         {
-            print(hit.collider.name+"-"+hit.collider.tag);
+            print(hit.collider.name + "-" + hit.collider.tag);
             var enem = hit.collider.transform.root.GetComponent<Enemy>();
             if (enem != null)
             {
