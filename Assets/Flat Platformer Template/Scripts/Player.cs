@@ -3,7 +3,6 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
-using System;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour

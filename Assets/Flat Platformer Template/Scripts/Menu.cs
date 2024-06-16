@@ -4,37 +4,38 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    [SerializeField] InputActionReference inputActionShoot;
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            Application.Quit();
-        }
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartGame();
-        }
-    }
+    [SerializeField] InputActionReference inputActionStart;
+    [SerializeField] InputActionReference inputActionQuit;
 
     private void StartGame()
     {
         SceneManager.LoadScene(1);
     }
 
+    private void QuitGame()
+    {
+        Application.Quit();
+    }
+
     private void OnEnable()
     {
-        inputActionShoot.action.started += OnStart;
+        inputActionStart.action.started += OnStart;
+        inputActionQuit.action.started += OnQuit;
     }
 
     private void OnDisable()
     {
-        inputActionShoot.action.started -= OnStart;
+        inputActionStart.action.started -= OnStart;
+        inputActionQuit.action.started -= OnQuit;
     }
 
     private void OnStart(InputAction.CallbackContext context)
     {
         StartGame();
+    }
+
+    private void OnQuit(InputAction.CallbackContext context)
+    {
+        QuitGame();
     }
 }
