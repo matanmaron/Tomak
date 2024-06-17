@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] InputActionReference inputActionJump;
     [SerializeField] InputActionReference inputActionQuit;
     [SerializeField] CharacterController2D controller2D;
+    [SerializeField] GameObject FirstWinButton;
     [SerializeField] float runSpeed = 40f;
     public Camera cam;
     public bool mirror;
@@ -191,6 +193,7 @@ public class Player : MonoBehaviour
         rig.velocity = Vector2.zero;
         _isDead = true;
         _WinPanel.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(FirstWinButton);
     }
 
     IEnumerator DeadCoroutine()
