@@ -4,16 +4,14 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
     [SerializeField] InputActionReference inputActionMove;
     [SerializeField] InputActionReference inputActionShoot;
     [SerializeField] InputActionReference inputActionJump;
     [SerializeField] InputActionReference inputActionQuit;
-    public float WalkSpeed;
-    public float JumpForce;
-    public Transform _Blade, _GroundCast;
+    [SerializeField] CharacterController2D controller2D;
+    [SerializeField] float runSpeed = 40f;
     public Camera cam;
     public bool mirror;
     public Text _scoreTxt = null;
@@ -22,23 +20,19 @@ public class Player : MonoBehaviour
     public GameObject _singObject = null;
     public GameObject _noteObject = null;
 
-    private bool _canJump, _canWalk, _canShoot;
-    private bool _isWalk, _isJump;
-    private float rot, _startScale;
+    private bool _canShoot;
     private Rigidbody2D rig;
-    private Vector2 _inputAxis;
-    private RaycastHit2D _hit;
+    private float _inputAxis;
     private Animator _animator;
     private Vector3 StartPos;
     private int _score;
     private bool _isDead;
-    private bool _afterJump = false;
     private string prevPointName = string.Empty;
+    private bool jump = false;
 
     void Start()
     {
         _noteObject.SetActive(false);
-        _afterJump = false;
         _WinPanel.SetActive(false);
         _isDead = false;
         _canShoot = true;
@@ -47,7 +41,6 @@ public class Player : MonoBehaviour
         StartPos = transform.position;
         rig = gameObject.GetComponent<Rigidbody2D>();
         _animator = gameObject.GetComponent<Animator>();
-        _startScale = transform.localScale.x;
     }
 
     private void SetScore()
@@ -78,11 +71,7 @@ public class Player : MonoBehaviour
 
     private void JumpKey(InputAction.CallbackContext context)
     {
-        if (_canJump)
-        {
-            _canWalk = false;
-            _isJump = true;
-        }
+        jump = true;
     }
 
     private void ShootKey(InputAction.CallbackContext context)
@@ -99,22 +88,7 @@ public class Player : MonoBehaviour
         {
             return;
         }
-        if (_hit = Physics2D.Linecast(new Vector2(_GroundCast.position.x, _GroundCast.position.y + 0.2f), _GroundCast.position))
-        {
-            if (_hit.transform.CompareTag("Ground"))
-            {
-                if (_afterJump)
-                {
-                    Debug.Log("Hit GROUND AFTER JUMP");
-                    _AudioManager.PlayStep(true);
-                    _afterJump = false;
-                }
-                _canJump = true;
-                _canWalk = true;
-            }
-        }
-        else _canJump = false;
-        _inputAxis = inputActionMove.action.ReadValue<Vector2>();
+        _inputAxis = inputActionMove.action.ReadValue<Vector2>().x * runSpeed;
     }
 
     IEnumerator ShootTimer()
@@ -150,61 +124,22 @@ public class Player : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, -41f, transform.position.z), step);
             return;
         }
-        Vector3 dir = _inputAxis;
-        dir.Normalize();
-
-        if (dir.x > 0)
-            mirror = false;
-        if (dir.x < 0)
-            mirror = true;
-
-        if (!mirror)
+        if (_inputAxis != 0)
         {
-            rot = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            transform.localScale = new Vector3(_startScale, _startScale, 1);
-            //_Blade.transform.rotation = Quaternion.AngleAxis(rot, Vector3.forward);
+            _AudioManager.PlayStep(true);
+            _animator.Play("Walk");
         }
-        if (mirror)
-        {
-            rot = Mathf.Atan2(-dir.y, -dir.x) * Mathf.Rad2Deg;
-            transform.localScale = new Vector3(-_startScale, _startScale, 1);
-            //_Blade.transform.rotation = Quaternion.AngleAxis(rot, Vector3.forward);
-        }
-        if (_inputAxis.x != 0)
-        {
-            rig.velocity = new Vector2(_inputAxis.x * WalkSpeed * Time.deltaTime, rig.velocity.y);
-
-            if (_canWalk)
-            {
-                if (!_isWalk)
-                {
-                    _AudioManager.PlayStep(true);
-                    _animator.Play("Walk");
-                    _isWalk = true;
-                }
-            }
-        }
-
         else
         {
             _AudioManager.PlayStep(false);
-            rig.velocity = new Vector2(0, rig.velocity.y);
             _animator.Play("Idle");
-            _isWalk = false;
         }
-
-        if (_isJump)
+        controller2D.Move(_inputAxis * Time.deltaTime, false, jump, () => 
         {
-            if (_canJump)
-            {
-                _AudioManager.PlayJump();
-                _afterJump = true;
-            }
-            rig.AddForce(new Vector2(0, JumpForce));
+            _AudioManager.PlayJump();
             _animator.Play("Jump");
-            _canJump = false;
-            _isJump = false;
-        }
+        });
+        jump = false;
     }
 
     public bool IsMirror()
@@ -212,10 +147,6 @@ public class Player : MonoBehaviour
         return mirror;
     }
 
-    void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(transform.position, _GroundCast.position);
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (_isDead)
@@ -257,8 +188,6 @@ public class Player : MonoBehaviour
     {
         _animator.Play("Idle");
         _AudioManager.PlayStep(false);
-        _isWalk = false;
-        _isJump = false;
         rig.velocity = Vector2.zero;
         _isDead = true;
         _WinPanel.SetActive(true);
@@ -273,8 +202,6 @@ public class Player : MonoBehaviour
         _animator.Play("Dead");
         yield return new WaitForSeconds(2.5f);
         transform.position = StartPos;
-        _isWalk = false;
-        _isJump = false;
         _isDead = false;
     }
 
