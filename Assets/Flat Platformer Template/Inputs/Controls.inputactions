@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "Controls",
     "maps": [
         {
@@ -18,7 +19,7 @@
                     "name": "Jump",
                     "type": "Button",
                     "id": "c0472587-6689-472d-8ab3-5c9b866f522e",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -27,7 +28,7 @@
                     "name": "Shoot",
                     "type": "Button",
                     "id": "ec01f075-ba9a-410c-95a0-543903f3b08f",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -36,7 +37,7 @@
                     "name": "Quit",
                     "type": "Button",
                     "id": "b388c3c6-12d8-4f9c-b512-b30e9cb9d68c",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -45,7 +46,16 @@
                     "name": "Start",
                     "type": "Button",
                     "id": "6e40834f-553d-4eae-8afb-da59268ef337",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Info",
+                    "type": "Button",
+                    "id": "7f67253d-59a3-4eea-8610-d7936368ee3d",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -280,6 +290,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "58ccaa1b-52eb-4f01-bd5b-2efe40877d1f",
+                    "path": "<Keyboard>/f1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard",
+                    "action": "Info",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "05e7d469-4954-4a37-8928-c00a3455e33b",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Info",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
