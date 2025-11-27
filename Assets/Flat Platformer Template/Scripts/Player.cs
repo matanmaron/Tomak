@@ -31,7 +31,6 @@ public class Player : MonoBehaviour
     private bool _isDead;
     private string prevPointName = string.Empty;
     private bool jump = false;
-
     void Start()
     {
         _noteObject.SetActive(false);
@@ -192,6 +191,7 @@ public class Player : MonoBehaviour
         _AudioManager.PlayStep(false);
         rig.velocity = Vector2.zero;
         _isDead = true;
+        TunrOffColliders();
         _WinPanel.SetActive(true);
         EventSystem.current.SetSelectedGameObject(FirstWinButton);
     }
@@ -201,16 +201,38 @@ public class Player : MonoBehaviour
         Debug.Log("DEAD !");
         _AudioManager.PlayDead();
         _isDead = true;
+        rig.velocity = Vector2.zero;
+        TunrOffColliders();
         _animator.StopPlayback();
         _animator.Play("Dead");
         yield return new WaitForSeconds(2.5f);
         transform.position = StartPos;
+        TunrOnColliders();
         _isDead = false;
     }
 
     public void OnWinClick()
     {
         SceneManager.LoadScene(0);
+    }
+
+    private void TunrOnColliders()
+    {
+        int playerLayer = LayerMask.NameToLayer("Player");
+        SetLayerRecursively(gameObject, playerLayer);
+    }
+    
+    private void TunrOffColliders()
+    {
+        int deadLayer = LayerMask.NameToLayer("Dead");
+        SetLayerRecursively(gameObject, deadLayer);
+    }
+    
+    private void SetLayerRecursively(GameObject obj, int layer)
+    {
+        obj.layer = layer;
+        foreach (Transform child in obj.transform)
+            SetLayerRecursively(child.gameObject, layer);
     }
 
 }

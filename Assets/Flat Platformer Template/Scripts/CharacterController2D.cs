@@ -68,7 +68,7 @@ public class CharacterController2D : MonoBehaviour
 
 	public void Move(float move, bool crouch, bool jump, Action jumpAction)
 	{
-		Debug.Log($"move:{move} | jump:{jump} | m_Grounded:{m_Grounded}");
+		//Debug.Log($"move:{move} | jump:{jump} | m_Grounded:{m_Grounded}");
 		// If crouching, check to see if the character can stand up
 		if (!crouch)
 		{
