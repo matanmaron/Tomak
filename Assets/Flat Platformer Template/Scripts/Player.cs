@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] InputActionReference inputActionStart;
     [SerializeField] InputActionReference inputActionMove;
     [SerializeField] InputActionReference inputActionShoot;
     [SerializeField] InputActionReference inputActionJump;
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
     private bool _isDead;
     private string prevPointName = string.Empty;
     private bool jump = false;
+    private int totalScore = 16;
     void Start()
     {
         _noteObject.SetActive(false);
@@ -47,7 +49,7 @@ public class Player : MonoBehaviour
     private void SetScore()
     {
         _score++;
-        _scoreTxt.text = _score.ToString();
+        _scoreTxt.text = $"{_score.ToString()}/{totalScore}";
         Debug.Log($"scorre: {_score}");
     }
 
@@ -60,6 +62,7 @@ public class Player : MonoBehaviour
 
     private void OnDisable()
     {
+        inputActionStart.action.started -= OnWinClick;
         inputActionShoot.action.started -= ShootKey;
         inputActionJump.action.started -= JumpKey;
         inputActionQuit.action.started -= QuitKey;
@@ -194,6 +197,7 @@ public class Player : MonoBehaviour
         TunrOffColliders();
         _WinPanel.SetActive(true);
         EventSystem.current.SetSelectedGameObject(FirstWinButton);
+        inputActionStart.action.started += OnWinClick;
     }
 
     IEnumerator DeadCoroutine()
@@ -211,6 +215,11 @@ public class Player : MonoBehaviour
         _isDead = false;
     }
 
+    private void OnWinClick(InputAction.CallbackContext context)
+    {
+        OnWinClick();
+    }
+    
     public void OnWinClick()
     {
         SceneManager.LoadScene(0);
